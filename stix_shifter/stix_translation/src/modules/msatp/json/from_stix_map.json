@@ -166,11 +166,17 @@
   },
   "x-com-msatp": {
     "fields": {
-      "computer_identity": [
+      "computer_name": [
         "FileCreationEvents.ComputerName",
         "ProcessCreationEvents.ComputerName",
         "NetworkCommunicationEvents.ComputerName",
         "RegistryEvents.ComputerName"
+      ],
+      "machine_id": [
+        "FileCreationEvents.MachineId",
+        "ProcessCreationEvents.MachineId",
+        "NetworkCommunicationEvents.MachineId",
+        "RegistryEvents.MachineId"
       ]
     }
   },

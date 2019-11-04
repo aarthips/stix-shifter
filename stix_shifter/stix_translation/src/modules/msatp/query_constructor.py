@@ -383,7 +383,8 @@ class QueryStringPatternTranslator:
             if comparator == self.comparator_lookup.get(ComparisonComparators.Like):
                 value, comparator = self._format_like(expression.value, comparator)
             else:
-                raise TypeError("Directory path works only with LIKE Operator")
+                raise TypeError("Comparator {comparator} unsupported for Directory Path, only LIKE Operator is "
+                                "supported".format(comparator=comparator))
         else:
             value, comparator = self.__eval_comparison_value(expression, comparator)
         comparison_string = self._parse_mapped_fields(expression, value, comparator,

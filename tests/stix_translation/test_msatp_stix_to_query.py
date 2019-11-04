@@ -202,18 +202,17 @@ class TestStixToQuery(unittest.TestCase):
         self._test_query_assertions(query, queries)
 
     def test_comb_observation_obs(self):
-        stix_pattern = "[process:created = '2019-09-04T09:29:29.0882Z'] OR [file:name LIKE 'upd_ter.exe'] START " \
-                       "t'2019-09-10T08:43:10.003Z' STOP t'2019-09-23T10:43:10.453Z'"
+        stix_pattern = "[process:created = '2019-09-04T09:29:29.0882Z'] OR [file:name LIKE 'upd_ter.exe']"
         query = translation.translate('msatp', 'query', '{}', stix_pattern)
         query['queries'] = _remove_timestamp_from_query(query['queries'])
 
         queries = [
             'union (find withsource = TableName in (ProcessCreationEvents) where EventTime >= datetime('
-            '2019-09-24T15:54:00.736219Z) and EventTime < datetime(2019-09-24T15:59:00.736219Z) | order by EventTime '
-            'desc | where tostring(ProcessCreationTime) == datetime(2019-09-04T09:29:29.0882Z)),(find withsource = '
-            'TableName in (FileCreationEvents) where EventTime >= datetime(2019-09-24T15:54:00.736219Z) and EventTime '
-            '< datetime(2019-09-24T15:59:00.736219Z) | order by EventTime desc | where FileName matches regex"('
-            'upd.ter.exe$)" or InitiatingProcessFileName matches regex"(upd.ter.exe$)" or '
-            'InitiatingProcessParentFileName matches regex"(upd.ter.exe$)")']
+            '2019-11-04T10:39:31.381Z) and EventTime < datetime(2019-11-04T10:44:31.381Z) | order by EventTime desc | '
+            'where tostring(ProcessCreationTime) == datetime(2019-09-04T09:29:29.0882Z)),(find withsource = TableName '
+            'in (FileCreationEvents) where EventTime >= datetime(2019-11-04T10:39:31.381Z) and EventTime < datetime('
+            '2019-11-04T10:44:31.381Z) | order by EventTime desc | where FileName matches regex"(upd.ter.exe$)" or '
+            'InitiatingProcessFileName matches regex"(upd.ter.exe$)" or InitiatingProcessParentFileName matches '
+            'regex"(upd.ter.exe$)")']
         queries = _remove_timestamp_from_query(queries)
         self._test_query_assertions(query, queries)

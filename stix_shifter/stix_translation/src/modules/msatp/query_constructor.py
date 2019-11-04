@@ -398,14 +398,18 @@ class QueryStringPatternTranslator:
 def translate_pattern(pattern: Pattern, data_model_mapper, options):
     """
     Conversion of expression object to kusto query
-    :param pattern: expression object, ANTLR parsed exrepssion object
+    :param pattern: expression object, ANTLR parsed expression object
     :param data_model_mapper: DataMapper object, mapping object obtained by parsing from_stix_map.json
     :param options: dict,timerange defaults to 5
     :return: str, kusto query
     """
     timerange = options['timerange']
     translated_dictionary = QueryStringPatternTranslator(pattern, data_model_mapper, timerange)
-    final_query = translated_dictionary.qualified_queries
-    if len(final_query) > 1:
-        final_query = ['union {}'.format(','.join(final_query))]
+    translated_query = translated_dictionary.qualified_queries
+    if len(translated_query) > 1:
+        # Query formation for multiple observation expression
+        final_query = ['union {}'.format(','.join(translated_query))]
+    else:
+        # Query formation for single observation expression
+        final_query = translated_query
     return final_query

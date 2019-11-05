@@ -30,7 +30,7 @@ class QueryStringPatternTranslator:
         ObservationOperators.Or: 'OR',
         ObservationOperators.And: 'OR'
     }
-
+    # STIX attribute to MSATP table mapping
     msatp_lookup_table = {"file": "FileCreationEvents",
                           "process": "ProcessCreationEvents",
                           "user-account": "ProcessCreationEvents",
@@ -42,6 +42,7 @@ class QueryStringPatternTranslator:
                           "x-com-msatp": "FileCreationEvents",
                           "directory": "FileCreationEvents"
                           }
+    # Join query to get MAC address value from MachineNetworkInfo
     join_query = ' | join kind= inner (MachineNetworkInfo {qualifier_string}{floor_time}| mvexpand parse_json(' \
                  'IPAddresses) | extend IP = IPAddresses.IPAddress | project EventTime ,MachineId , MacAddress, IP, ' \
                  'FormattedTimeKey) on MachineId, $left.FormattedTimeKey ' \
@@ -383,8 +384,8 @@ class QueryStringPatternTranslator:
             if comparator == self.comparator_lookup.get(ComparisonComparators.Like):
                 value, comparator = self._format_like(expression.value, comparator)
             else:
-                raise TypeError("Comparator {comparator} unsupported for Directory Path, only LIKE Operator is "
-                                "supported".format(comparator=comparator))
+                raise TypeError("Comparator {comparator} unsupported for Directory Path, use only LIKE operator"
+                                .format(comparator=comparator))
         else:
             value, comparator = self.__eval_comparison_value(expression, comparator)
         comparison_string = self._parse_mapped_fields(expression, value, comparator,

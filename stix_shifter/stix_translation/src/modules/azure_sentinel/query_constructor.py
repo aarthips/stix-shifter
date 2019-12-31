@@ -161,7 +161,7 @@ class QueryStringPatternTranslator:
                 parent_child_obj_array = mapped_field.split('.')
                 parent_attribute = parent_child_obj_array[0]
                 child_attribute_path = '/'.join(parent_child_obj_array[1:])
-                if stix_field in ['pid', 'parent_ref.pid', 'account_last_login', 'provider', 'vendor']:
+                if stix_field in ['pid', 'parent_ref.pid', 'account_last_login', 'provider', 'vendor', 'protocols[*]']:
                     child_attribute = '{fn}/'.format(fn=lambda_func) + child_attribute_path
                 else:
                     child_attribute = 'tolower({fn}/'.format(fn=lambda_func) + child_attribute_path + ')'

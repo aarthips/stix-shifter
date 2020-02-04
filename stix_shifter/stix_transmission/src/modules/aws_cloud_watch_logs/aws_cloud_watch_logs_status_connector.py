@@ -4,7 +4,7 @@ from ..base.base_status_connector import Status
 from enum import Enum
 import math
 
-DEFAULT_LIMIT = 1000
+DEFAULT_LIMIT = 10000
 
 
 class AWSCWLOGS(Enum):

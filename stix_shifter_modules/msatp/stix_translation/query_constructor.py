@@ -379,7 +379,7 @@ class QueryStringPatternTranslator:
             raise ValueError("STIX_objects is not mapping with lookup table attributes")
         comparator = self._lookup_comparison_operator(expression.comparator)
         mapped_from_stix_list = mapped_mac_list if mapped_mac_list else mapped_list
-        if stix_field == 'created':
+        if 'created' in stix_field:
             value = self._format_datetime(expression.value, expression)
         elif 'path' in stix_field:
             if comparator == self.comparator_lookup.get(ComparisonComparators.Like):

@@ -1,6 +1,6 @@
 {
-  "NetworkCommunicationEvents": {
-    "EventTime": [
+  "DeviceNetworkEvents": {
+    "Timestamp": [
       {
         "key": "first_observed",
         "cybox": false,
@@ -226,12 +226,12 @@
         "references": ["src_mac"]
       }
     ],
-    "ComputerName": {
-      "key": "x_com_msatp.computer_name",
+    "DeviceName": {
+      "key": "x_com_msatp.device_name",
       "cybox": false
     },
-    "MachineId": {
-      "key": "x_com_msatp.machine_id",
+    "DeviceId": {
+      "key": "x_com_msatp.device_id",
       "cybox": false
     },
     "event_count": {
@@ -240,8 +240,8 @@
       "transformer": "ToInteger"
     }
   },
-  "ProcessCreationEvents": {
-    "EventTime": [
+  "DeviceProcessEvents": {
+    "Timestamp": [
       {
         "key": "first_observed",
         "cybox": false,
@@ -535,12 +535,12 @@
         "references": "parent_process_file"
       }
     ],
-    "ComputerName": {
-      "key": "x_com_msatp.computer_name",
+    "DeviceName": {
+      "key": "x_com_msatp.device_name",
       "cybox": false
     },
-    "MachineId": {
-      "key": "x_com_msatp.machine_id",
+    "DeviceId": {
+      "key": "x_com_msatp.device_id",
       "cybox": false
     },
     "event_count": {
@@ -549,8 +549,8 @@
       "transformer": "ToInteger"
     }
   },
-  "FileCreationEvents": {
-    "EventTime": [
+  "DeviceFileEvents": {
+    "Timestamp": [
       {
         "key": "first_observed",
         "cybox": false,
@@ -735,12 +735,12 @@
         "references": "fc_process_file"
       }
     ],
-    "ComputerName": {
-      "key": "x_com_msatp.computer_name",
+    "DeviceName": {
+      "key": "x_com_msatp.device_name",
       "cybox": false
     },
-    "MachineId": {
-      "key": "x_com_msatp.machine_id",
+    "DeviceId": {
+      "key": "x_com_msatp.device_id",
       "cybox": false
     },
     "event_count": {
@@ -749,8 +749,8 @@
       "transformer": "ToInteger"
     }
   },
-  "RegistryEvents": {
-    "EventTime": [
+  "DeviceRegistryEvents": {
+    "Timestamp": [
       {
         "key": "first_observed",
         "cybox": false,
@@ -916,12 +916,12 @@
         "references": "re_process_file"
       }
     ],
-    "ComputerName": {
-      "key": "x_com_msatp.computer_name",
+    "DeviceName": {
+      "key": "x_com_msatp.device_name",
       "cybox": false
     },
-    "MachineId": {
-      "key": "x_com_msatp.machine_id",
+    "DeviceId": {
+      "key": "x_com_msatp.device_id",
       "cybox": false
     },
     "event_count": {
